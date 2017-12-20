@@ -4,12 +4,21 @@
 
 using namespace std;
 
-int main()
+// Déclaration des fonctions / procédures
+
+//void fileReadInstance();
+//void keyboardReadInstance();
+//void randomGeneratorInstance();
+
+
+
+// Programme principal
+
+int main(int argc, char** argv)
 {
 	
 	int choix;
 	bool done = false;
-
 
 	// Menu
 	while (!done)
@@ -27,17 +36,17 @@ int main()
 		switch (choix)
 		{
 			case 1 : // fichier
-
+				//fileReadInstance();
 				done = true;
 				break;
 
 			case 2 : // clavier
-
+				//keyboardReadInstance();
 				done = true;
 				break;
 
 			case 3 : //générateur aléatoire
-			
+				//randomGeneratorInstance();
 				done = true;
 				break;
 
@@ -48,7 +57,11 @@ int main()
 		}
 	}
 
+	// menu incomplet --> gérer les résultats
+
+
 
 
 	return 0;
 }
+
