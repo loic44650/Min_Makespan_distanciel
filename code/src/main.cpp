@@ -1,26 +1,35 @@
-#include <iostream>
+/**
+ * @file main.cpp
+ * @author Mahier Loïc && Phalavandishvili Demetre
+ * @since december 20th, 2017
+ * @brief programme principal
+**/
 
-#include "algo.cpp"
+
+#include <iostream>
+#include <cassert>
+#include <string>
+#include <vector>
+
+#include "algorithme.cpp"
+#include "formatInstance.cpp"
 
 using namespace std;
 
-// Déclaration des fonctions / procédures
 
-//void fileReadInstance();
-//void keyboardReadInstance();
-//void randomGeneratorInstance();
-
-
-
-// Programme principal
-
+/**
+ * @name main
+ * @brief  
+ * @param
+ * @return
+**/
 int main(int argc, char** argv)
 {
-	
+	Instance instance;
 	int choix;
 	bool done = false;
 
-	// Menu
+	// Menu instance
 	while (!done)
 	{
 		cout << endl;
@@ -30,38 +39,79 @@ int main(int argc, char** argv)
 		cout << "Pour traiter une instance à partir d'un fichier, tapez 1." << endl;
 		cout << "Pour traiter une instance saisie au clavier, tapez 2." << endl;
 		cout << "Pour traiter une instance générée aléatoirement, tapez 3." << endl;
-		
+		cout << endl;
+
 		cin >> choix;
 
 		switch (choix)
 		{
 			case 1 : // fichier
-				//fileReadInstance();
+				// fileReadInstance();
 				done = true;
 				break;
 
 			case 2 : // clavier
-				//keyboardReadInstance();
+				instance = keyboardReadInstance();
 				done = true;
 				break;
 
-			case 3 : //générateur aléatoire
-				//randomGeneratorInstance();
+			case 3 : // générateur aléatoire
+				// randomGeneratorInstance();
 				done = true;
 				break;
 
 			default :
-				cout << "La saisie du choix à est incorrecte ! Veuillez recommencer." << endl;
+				cout << endl;
+				cout << "La saisie du choix est incorrecte ! Veuillez recommencer." << endl;
 				cout << endl;
 				break;
 		}
 	}
 
-	// menu incomplet --> gérer les résultats
+	affichageInstance(instance);
 
+	// done = false;
 
+	// Menu algo
+	// while (!done)
+	// {
+	// 	cout << endl;
+	// 	cout << "A l'aide de quel algorithme souhaitez-vous traiter cette instance ?" << endl;
+	// 	cout << "____________________________________________________________________" << endl;
+	// 	cout << endl;
+	// 	cout << "Pour traiter une instance à l'aide du LSA, tapez 1." << endl;
+	// 	cout << "Pour traiter une instance à l'aide du LPT, tapez 2." << endl;
+	// 	cout << "Pour traiter une instance à l'aide de l'algo mystère, tapez 3." << endl;
+	// 	cout << endl;
 
+	// 	cin >> choix;
+
+	// 	switch (choix)
+	// 	{
+	// 		case 1 : // LSA
+	// 			// LSA();
+	// 			done = true;
+	// 			break;
+
+	// 		case 2 : // LPT
+	// 			// LPT();
+	// 			done = true;
+	// 			break;
+
+	// 		case 3 : // MyAlgo
+	// 			// MyAlgo();
+	// 			done = true;
+	// 			break;
+
+	// 		default :
+	// 			cout << endl;
+	// 			cout << "La saisie du choix est incorrecte ! Veuillez recommencer." << endl;
+	// 			cout << endl;
+	// 			break;
+	// 	}
+	// }
+
+	// incomplet --> afficher les résultats
 
 	return 0;
 }
-
