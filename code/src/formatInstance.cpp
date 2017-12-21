@@ -46,14 +46,67 @@ void affichageInstance(vector<Instance> instance)
 
 /**
  * @name fileReadInstance
- * @brief  
+ * @brief l'instance est lu à partir dun fichier
  * @param
  * @return Instance
 **/
-// vector<Instance> fileReadInstance()
-// {
+vector<Instance> fileReadInstance()
+{
+	vector<Instance> vector;
+	Instance instance;
+	string nomFichier;
+	string str;
+	string tmp;
+	int cpt = 0;
 
-// }
+	cout << endl;
+	cout << "Veuillez saisir le nom du fichier contenant l'instance :" << endl;
+	cout << "_________________________________________________________" << endl;
+	cout << endl;
+
+	cin >> nomFichier;	
+
+	ifstream fichier(nomFichier);
+
+	if (!fichier.is_open()) cerr << "Impossible d'ouvrir le fichier " << nomFichier << " !" << endl;
+	else
+	{
+		while(!fichier.eof())
+		{
+			getline(fichier, str);
+
+			for (unsigned int i = 0; i <= str.length(); ++i)
+			{
+				if ( i != str.length() && (str[i] != ':')) tmp += str[i];
+				else if (cpt == 0) 
+				{
+					instance.nbMachine = stoi(tmp);
+					++cpt;
+					tmp = "";
+				}
+				else if (cpt == 1)
+				{
+					instance.nbTache = stoi(tmp);
+					++cpt;
+					tmp = "";	
+				}
+				else 
+				{
+					instance.duree.push_back(stoi(tmp));
+					tmp = "";	
+				}
+			}
+		}		
+		fichier.close();
+	}
+
+	// on vérifie qu'on a bien autant de durée que de tâche
+	assert(instance.nbTache == instance.duree.size());
+
+	vector.push_back(instance);
+
+	return vector;
+}
 
 
 /**

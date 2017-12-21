@@ -8,11 +8,11 @@
 
 #include <iostream>
 #include <cassert>
+#include <ctime>
+#include <cstdlib>
+#include <fstream>
 #include <string>
 #include <vector>
-#include <cstdlib>
-#include <ctime>
-
 
 #include "algorithme.cpp"
 #include "formatInstance.cpp"
@@ -22,7 +22,7 @@ using namespace std;
 
 /**
  * @name main
- * @brief  
+ * @brief fonction main du programme principal
  * @param
  * @return
 **/
@@ -49,7 +49,7 @@ int main(int argc, char** argv)
 		switch (choix)
 		{
 			case 1 : // fichier
-				// instance = fileReadInstance();
+				instance = fileReadInstance();
 				done = true;
 				break;
 
@@ -65,54 +65,55 @@ int main(int argc, char** argv)
 
 			default :
 				cout << endl;
-				cout << "La saisie du choix est incorrecte ! Veuillez recommencer." << endl;
+				cerr << "La saisie du choix est incorrecte ! Veuillez recommencer." << endl;
 				cout << endl;
 				break;
 		}
 	}
 
-	affichageInstance(instance);
+	// test
+	// affichageInstance(instance);
 
-	// done = false;
+	done = false;
 
 	// Menu algo
-	// while (!done)
-	// {
-	// 	cout << endl;
-	// 	cout << "A l'aide de quel algorithme souhaitez-vous traiter cette instance ?" << endl;
-	// 	cout << "____________________________________________________________________" << endl;
-	// 	cout << endl;
-	// 	cout << "Pour traiter une instance à l'aide du LSA, tapez 1." << endl;
-	// 	cout << "Pour traiter une instance à l'aide du LPT, tapez 2." << endl;
-	// 	cout << "Pour traiter une instance à l'aide de l'algo mystère, tapez 3." << endl;
-	// 	cout << endl;
+	while (!done)
+	{
+		cout << endl;
+		cout << "A l'aide de quel algorithme souhaitez-vous traiter cette instance ?" << endl;
+		cout << "____________________________________________________________________" << endl;
+		cout << endl;
+		cout << "Pour traiter une instance à l'aide du LSA, tapez 1." << endl;
+		cout << "Pour traiter une instance à l'aide du LPT, tapez 2." << endl;
+		cout << "Pour traiter une instance à l'aide de l'algo mystère, tapez 3." << endl;
+		cout << endl;
 
-	// 	cin >> choix;
+		cin >> choix;
 
-	// 	switch (choix)
-	// 	{
-	// 		case 1 : // LSA
-	// 			// LSA();
-	// 			done = true;
-	// 			break;
+		switch (choix)
+		{
+			case 1 : // LSA
+				// LSA();
+				done = true;
+				break;
 
-	// 		case 2 : // LPT
-	// 			// LPT();
-	// 			done = true;
-	// 			break;
+			case 2 : // LPT
+				// LPT();
+				done = true;
+				break;
 
-	// 		case 3 : // MyAlgo
-	// 			// MyAlgo();
-	// 			done = true;
-	// 			break;
+			case 3 : // MyAlgo
+				// MyAlgo();
+				done = true;
+				break;
 
-	// 		default :
-	// 			cout << endl;
-	// 			cout << "La saisie du choix est incorrecte ! Veuillez recommencer." << endl;
-	// 			cout << endl;
-	// 			break;
-	// 	}
-	// }
+			default :
+				cout << endl;
+				cout << "La saisie du choix est incorrecte ! Veuillez recommencer." << endl;
+				cout << endl;
+				break;
+		}
+	}
 
 	// incomplet --> afficher les résultats
 
