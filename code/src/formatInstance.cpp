@@ -29,14 +29,17 @@ struct Instance
  * @param Instance
  * @return
 **/
-void affichageInstance(Instance instance)
+void affichageInstance(vector<Instance> instance)
 {
-	cout << "Nombre de machine : " << instance.nbMachine << endl;
-	cout << "Nombre de tâche : " << instance.nbTache << endl;
-
-	for (unsigned int i = 0; i < instance.nbTache; ++i)
+	for (auto n : instance)
 	{
-		cout << "Duree de la tâche " << i << " : " << instance.duree[i] << endl;
+		cout << "Nombre de machine : " << n.nbMachine << endl;
+		cout << "Nombre de tâche : " << n.nbTache << endl;
+
+		for (unsigned int i = 0; i < n.nbTache; ++i)
+		{
+			cout << "Duree de la tâche " << i << " : " << n.duree[i] << endl;
+		}
 	}
 }
 
@@ -47,7 +50,7 @@ void affichageInstance(Instance instance)
  * @param
  * @return Instance
 **/
-// Instance fileReadInstance()
+// vector<Instance> fileReadInstance()
 // {
 
 // }
@@ -59,8 +62,9 @@ void affichageInstance(Instance instance)
  * @param
  * @return Instance
 **/
-Instance keyboardReadInstance()
+vector<Instance> keyboardReadInstance()
 {
+	vector<Instance> vector;
 	Instance instance;
 	string str;
 	string tmp;
@@ -87,31 +91,64 @@ Instance keyboardReadInstance()
 		{
 			instance.nbTache = stoi(tmp);
 			++cpt;
-			tmp = "";			
+			tmp = "";	
 		}
 		else 
 		{
 			instance.duree.push_back(stoi(tmp));
-			tmp = "";				
+			tmp = "";	
 		}
 	}
 
 	// on vérifie qu'on a bien autant de durée que de tâche
 	assert(instance.nbTache == instance.duree.size());
 
-	return instance;
+	vector.push_back(instance);
+
+	return vector;
 }
 
 
 /**
  * @name randomGeneratorInstance
- * @brief l'instance est générée aléatoirement, à partir de 5 entiers saisie par l'utilisateur
+ * @brief plusieurs instances sont générées aléatoirements, à partir de 5 entiers saisie par l'utilisateur
  * @param
  * @return Instance
 **/
-// Instance randomGeneratorInstance()
-// {
+vector<Instance> randomGeneratorInstance()
+{
+	vector<Instance> vector;
+	Instance instance;
+	int nbMachine;
+	int nbTache;
+	int nbInstance;
+	int min;
+	int max;
 
-// }
+	cout << endl;
+	cout << "Veuillez saisir ces informations pour générer des instances aléatoires :" << endl;
+	cout << "_________________________________________________________________________" << endl;
+	cout << endl;
+	cout << "Nombre de machine : " ; cin >> nbMachine; cout << endl;
+	cout << "Nombre de tâche : " ; cin >> nbTache; cout << endl;
+	cout << "Nombre d'instance : " ; cin >> nbInstance; cout << endl;
+	cout << "Duree min : " ; cin >> min; cout << endl;
+	cout << "Duree max : " ; cin >> max; cout << endl;
+
+	instance.nbMachine = nbMachine;
+	instance.nbTache = nbTache;
+
+	for (int i = 0; i < nbInstance; ++i)
+	{
+		instance.duree.clear();
+		for (int j = 0; j < nbTache; ++j)
+		{
+			instance.duree.push_back(rand() % max - min);
+		}
+		vector.push_back(instance);
+	}
+
+	return vector;
+}
 
 #endif

@@ -10,6 +10,9 @@
 #include <cassert>
 #include <string>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
+
 
 #include "algorithme.cpp"
 #include "formatInstance.cpp"
@@ -25,7 +28,7 @@ using namespace std;
 **/
 int main(int argc, char** argv)
 {
-	Instance instance;
+	vector<Instance> instance; 
 	int choix;
 	bool done = false;
 
@@ -46,7 +49,7 @@ int main(int argc, char** argv)
 		switch (choix)
 		{
 			case 1 : // fichier
-				// fileReadInstance();
+				// instance = fileReadInstance();
 				done = true;
 				break;
 
@@ -56,7 +59,7 @@ int main(int argc, char** argv)
 				break;
 
 			case 3 : // générateur aléatoire
-				// randomGeneratorInstance();
+				instance = randomGeneratorInstance();
 				done = true;
 				break;
 
