@@ -12,8 +12,8 @@ using namespace std;
 
 
 /**
- * @name main
- * @brief  
+ * @name Instance
+ * @brief struture de notre instance : un nombre de machine et un nombre e tâche ainsi qu'un vecteur contenant leurs durées
 **/
 struct Instance
 {
