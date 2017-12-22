@@ -31,16 +31,17 @@ struct Instance
 **/
 void affichageInstance(vector<Instance> instance)
 {
-	for (auto n : instance)
+	for(auto n : instance)
 	{
 		cout << "Nombre de machine : " << n.nbMachine << endl;
 		cout << "Nombre de tâche : " << n.nbTache << endl;
 
-		for (unsigned int i = 0; i < n.nbTache; ++i)
+		for(unsigned int i = 0; i < n.nbTache; ++i)
 		{
 			cout << "Duree de la tâche " << i << " : " << n.duree[i] << endl;
 		}
 	}
+	cout << endl;
 }
 
 
@@ -68,23 +69,23 @@ vector<Instance> fileReadInstance()
 
 	ifstream fichier(nomFichier);
 
-	if (!fichier.is_open()) cerr << "Impossible d'ouvrir le fichier " << nomFichier << " !" << endl;
+	if(!fichier.is_open()) cerr << "Impossible d'ouvrir le fichier " << nomFichier << " !" << endl;
 	else
 	{
 		while(!fichier.eof())
 		{
 			getline(fichier, str);
 
-			for (unsigned int i = 0; i <= str.length(); ++i)
+			for(unsigned int i = 0; i <= str.length(); ++i)
 			{
-				if ( i != str.length() && (str[i] != ':')) tmp += str[i];
-				else if (cpt == 0) 
+				if(i != str.length() && (str[i] != ':')) tmp += str[i];
+				else if(cpt == 0) 
 				{
 					instance.nbMachine = stoi(tmp);
 					++cpt;
 					tmp = "";
 				}
-				else if (cpt == 1)
+				else if(cpt == 1)
 				{
 					instance.nbTache = stoi(tmp);
 					++cpt;
@@ -131,16 +132,16 @@ vector<Instance> keyboardReadInstance()
 
 	cin >> str;
 
-	for (unsigned int i = 0; i <= str.length(); ++i)
+	for(unsigned int i = 0; i <= str.length(); ++i)
 	{
-		if ( i != str.length() && (str[i] != ':')) tmp += str[i];
-		else if (cpt == 0) 
+		if(i != str.length() && (str[i] != ':')) tmp += str[i];
+		else if(cpt == 0) 
 		{
 			instance.nbMachine = stoi(tmp);
 			++cpt;
 			tmp = "";
 		}
-		else if (cpt == 1)
+		else if(cpt == 1)
 		{
 			instance.nbTache = stoi(tmp);
 			++cpt;
@@ -191,10 +192,10 @@ vector<Instance> randomGeneratorInstance()
 	instance.nbMachine = nbMachine;
 	instance.nbTache = nbTache;
 
-	for (int i = 0; i < nbInstance; ++i)
+	for(int i = 0; i < nbInstance; ++i)
 	{
 		instance.duree.clear();
-		for (int j = 0; j < nbTache; ++j)
+		for(int j = 0; j < nbTache; ++j)
 		{
 			instance.duree.push_back(rand() % max - min);
 		}

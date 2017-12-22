@@ -13,6 +13,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 #include "algorithme.cpp"
 #include "formatInstance.cpp"
@@ -72,8 +73,15 @@ int main(int argc, char** argv)
 	}
 
 	// test
-	
 	affichageInstance(instance);
+
+	// test
+	affichageResultat(LSA(instance), LPT(instance));
+	// vector<int> maxLSA = LSA(instance);
+	// vector<int> maxLPT = LPT(instance);
+	// cout << endl;
+	// cout << "Temps max LSA : " << maxLSA[0] << endl;
+	// cout << "Temps max LPT : " << maxLPT[0] << endl;
 
 	// a priori on fait tjrs les 3 algos, donc pas besoin de menu
 
