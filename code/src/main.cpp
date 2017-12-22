@@ -36,8 +36,8 @@ int main(int argc, char** argv)
 	while (!done)
 	{
 		cout << endl;
-		cout << "Bonjour, quelle type d'instance souhaitez-vous traiter ?" << endl;
-		cout << "_________________________________________________________" << endl;
+		cout << "Bonjour, quel type d'instance souhaitez-vous traiter ?" << endl;
+		cout << "_______________________________________________________" << endl;
 		cout << endl;
 		cout << "Pour traiter une instance à partir d'un fichier, tapez 1." << endl;
 		cout << "Pour traiter une instance saisie au clavier, tapez 2." << endl;
@@ -72,48 +72,51 @@ int main(int argc, char** argv)
 	}
 
 	// test
-	// affichageInstance(instance);
+	
+	affichageInstance(instance);
 
-	done = false;
+	// a priori on fait tjrs les 3 algos, donc pas besoin de menu
+
+	// done = false;
 
 	// Menu algo
-	while (!done)
-	{
-		cout << endl;
-		cout << "A l'aide de quel algorithme souhaitez-vous traiter cette instance ?" << endl;
-		cout << "____________________________________________________________________" << endl;
-		cout << endl;
-		cout << "Pour traiter une instance à l'aide du LSA, tapez 1." << endl;
-		cout << "Pour traiter une instance à l'aide du LPT, tapez 2." << endl;
-		cout << "Pour traiter une instance à l'aide de l'algo mystère, tapez 3." << endl;
-		cout << endl;
+	// while (!done)
+	// {
+	// 	cout << endl;
+	// 	cout << "A l'aide de quel algorithme souhaitez-vous traiter cette instance ?" << endl;
+	// 	cout << "____________________________________________________________________" << endl;
+	// 	cout << endl;
+	// 	cout << "Pour traiter une instance à l'aide du LSA, tapez 1." << endl;
+	// 	cout << "Pour traiter une instance à l'aide du LPT, tapez 2." << endl;
+	// 	cout << "Pour traiter une instance à l'aide de l'algo mystère, tapez 3." << endl;
+	// 	cout << endl;
 
-		cin >> choix;
+	// 	cin >> choix;
 
-		switch (choix)
-		{
-			case 1 : // LSA
-				// LSA();
-				done = true;
-				break;
+	// 	switch (choix)
+	// 	{
+	// 		case 1 : // LSA
+	// 			// LSA();
+	// 			done = true;
+	// 			break;
 
-			case 2 : // LPT
-				// LPT();
-				done = true;
-				break;
+	// 		case 2 : // LPT
+	// 			// LPT();
+	// 			done = true;
+	// 			break;
 
-			case 3 : // MyAlgo
-				// MyAlgo();
-				done = true;
-				break;
+	// 		case 3 : // MyAlgo
+	// 			// MyAlgo();
+	// 			done = true;
+	// 			break;
 
-			default :
-				cout << endl;
-				cout << "La saisie du choix est incorrecte ! Veuillez recommencer." << endl;
-				cout << endl;
-				break;
-		}
-	}
+	// 		default :
+	// 			cout << endl;
+	// 			cout << "La saisie du choix est incorrecte ! Veuillez recommencer." << endl;
+	// 			cout << endl;
+	// 			break;
+	// 	}
+	// }
 
 	// incomplet --> afficher les résultats
 

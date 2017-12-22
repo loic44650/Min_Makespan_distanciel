@@ -8,12 +8,17 @@
 #ifndef ALGORITHME
 #define ALGORITHME
 
+
 /**
  * @name LSA
  * @brief List Scheduling Algorithm 
  * @param
  * @return
 **/
+vector<vector> LSA(vector<Instance> instance)
+{
+	vector<int> Machines;
+}
 
 
 /**
@@ -22,7 +27,11 @@
  * @param
  * @return
 **/
+// vector<vector> LPT(vector<Instance> instance)
+// {
 
+// }
+	
 
 /**
  * @name MyAlgo
