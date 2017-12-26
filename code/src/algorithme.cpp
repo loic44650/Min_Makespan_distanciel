@@ -19,7 +19,7 @@ using namespace std;
  * @param vector<int>, vector<int>
  * @return
 **/
-void affichageResultat(vector<int> resLSA, vector<int> resLPT)
+void affichageResultat(vector<int> resLSA, vector<int> resLPT) // faudra rajouter le 3 eme algo
 {
 	assert(resLSA.size() == resLPT.size());
 

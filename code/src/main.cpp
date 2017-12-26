@@ -43,6 +43,7 @@ int main(int argc, char** argv)
 		cout << "Pour traiter une instance à partir d'un fichier, tapez 1." << endl;
 		cout << "Pour traiter une instance saisie au clavier, tapez 2." << endl;
 		cout << "Pour traiter une instance générée aléatoirement, tapez 3." << endl;
+		cout << "Pour quitter l'application, tapez 4." << endl;		
 		cout << endl;
 
 		cin >> choix;
@@ -51,19 +52,22 @@ int main(int argc, char** argv)
 		{
 			case 1 : // fichier
 				instance = fileReadInstance();
-				done = true;
+				affichageResultat(LSA(instance), LPT(instance));
 				break;
 
 			case 2 : // clavier
 				instance = keyboardReadInstance();
-				done = true;
+				affichageResultat(LSA(instance), LPT(instance));
 				break;
 
 			case 3 : // générateur aléatoire
 				instance = randomGeneratorInstance();
-				done = true;
 				break;
 
+			case 4 :
+				done = true;
+				break;	
+			
 			default :
 				cout << endl;
 				cerr << "La saisie du choix est incorrecte ! Veuillez recommencer." << endl;
@@ -72,11 +76,14 @@ int main(int argc, char** argv)
 		}
 	}
 
-	// test
-	affichageInstance(instance);
+
+
 
 	// test
-	affichageResultat(LSA(instance), LPT(instance));
+	// affichageInstance(instance);
+
+	// test
+	// affichageResultat(LSA(instance), LPT(instance));
 	// vector<int> maxLSA = LSA(instance);
 	// vector<int> maxLPT = LPT(instance);
 	// cout << endl;
@@ -127,6 +134,9 @@ int main(int argc, char** argv)
 	// }
 
 	// incomplet --> afficher les résultats
+
+
+
 
 	return 0;
 }
