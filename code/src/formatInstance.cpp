@@ -98,6 +98,7 @@ vector<Instance> fileReadInstance()
 				}
 			}
 		}		
+
 		fichier.close();
 	}
 
@@ -195,10 +196,13 @@ vector<Instance> randomGeneratorInstance()
 	for(int i = 0; i < nbInstance; ++i)
 	{
 		instance.duree.clear();
+
 		for(int j = 0; j < nbTache; ++j)
 		{
-			instance.duree.push_back(rand() % max - min);
+			instance.duree.push_back(rand() % max + min); // probleme au niveau du random je crois
+			// l'interval n'ai pas bon !!
 		}
+
 		vector.push_back(instance);
 	}
 
