@@ -9,6 +9,7 @@
 #define ALGORITHME
 
 #include "formatInstance.cpp"
+#include <algorithm>
 
 using namespace std;
 
@@ -56,20 +57,24 @@ void affichageResultat(vector<Instance> instance, vector<int> resLSA, vector<int
 void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> resLPT) // faudra rajouter le 3 eme algo
 {
 	string nomFichier;
-	int max;
+	int maxi;
 	int moy;
 	int cpt = 0;
+	int mI;
+	double sumLSA = 0, sumLPT = 0;
 
 	assert(resLSA.size() == resLPT.size());
 
 	cout << endl;
-	cout << "Veuillez saisir le nom du fichier contenant l'instance :" << endl;
-	cout << "_________________________________________________________" << endl;
+	cout << "Veuillez saisir le nom du fichier qui va contenir le resulat :" << endl;
+	cout << "______________________________________________________________" << endl;
 	cout << endl;
 
 	cin >> nomFichier;	
 
 	ofstream fichier(nomFichier);
+
+	vector<int> vLSA,vLPT;
 
 	if(!fichier.is_open()) cerr << "Impossible d'ouvrir le fichier " << nomFichier << " !" << endl;
 	else
@@ -81,19 +86,19 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
 
 		for(auto n : inst)
 		{
-			max = 0;
+			maxi = 0;
 			moy = 0;
 
 			for(unsigned int i = 0; i < n.nbTache; ++i)
 			{
 				moy += n.duree[i];
 
-				if(max < n.duree[i]) max = n.duree[i];  
+				if(maxi < n.duree[i]) maxi = n.duree[i];  
 			}
 
 			fichier << endl;
 			fichier << "Pour l'instance n°" << cpt + 1 << " :" << endl;
-			fichier << "Borne inférieur maximum : " << max << endl;
+			fichier << "Borne inférieur maximum : " << maxi << endl;
 			fichier << "Borne inférieur moyenne : " << moy / n.nbTache << endl;
 			fichier << "Résulat LSA : " << resLSA[cpt] << endl;
 			fichier << "Résulat LPT : " << resLPT[cpt] << endl;
@@ -101,14 +106,18 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
 			fichier << "================================================" << endl;
 			fichier << endl;
 
+			mI = max(maxi,(moy /(int) n.nbTache) );
+			sumLSA += resLSA[cpt] / mI;
+			sumLPT += resLPT[cpt] / mI;
+
 			++cpt;
 		}
 
 		// ratio à calculer !!
 
 		fichier << endl;
-		fichier << "Ratio d'approximation moyen LSA : " << endl;
-		fichier << "Ratio d'approximation moyen LPT : " << endl;
+		fichier << "Ratio d'approximation moyen LSA : " << sumLSA / inst.size() << endl;
+		fichier << "Ratio d'approximation moyen LPT : " << sumLPT / inst.size() << endl;
 		fichier << "Ratio d'approximation moyen myAlgo : " << endl;
 		fichier << "================================================" << endl;
 		fichier << endl;

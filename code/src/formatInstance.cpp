@@ -200,7 +200,8 @@ vector<Instance> randomGeneratorInstance()
 
 		for(int j = 0; j < nbTache; ++j)
 		{
-			instance.duree.push_back(rand() % max + min); // probleme au niveau du random je crois
+			int temp = (rand() % ((max-min)+1)) + min;
+			instance.duree.push_back(temp); // probleme au niveau du random je crois
 			// l'interval n'ai pas bon !!
 		}
 
