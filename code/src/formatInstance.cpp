@@ -41,6 +41,7 @@ void affichageInstance(vector<Instance> instance)
 			cout << "Duree de la tâche " << i << " : " << n.duree[i] << endl;
 		}
 	}
+	
 	cout << endl;
 }
 

@@ -91,12 +91,10 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
 				if(max < n.duree[i]) max = n.duree[i];  
 			}
 
-			moy /= n.nbTache;
-
 			fichier << endl;
 			fichier << "Pour l'instance n°" << cpt + 1 << " :" << endl;
 			fichier << "Borne inférieur maximum : " << max << endl;
-			fichier << "Borne inférieur moyenne : " << moy << endl;
+			fichier << "Borne inférieur moyenne : " << moy / n.nbTache << endl;
 			fichier << "Résulat LSA : " << resLSA[cpt] << endl;
 			fichier << "Résulat LPT : " << resLPT[cpt] << endl;
 			fichier << "Résulat myAlgo : " << endl;
@@ -171,9 +169,9 @@ vector<int> LSA(vector<Instance> instance)
 
 /**
  * @name sup
- * @brief  
- * @param
- * @return
+ * @brief retourne vrai si i supérieur strict à j 
+ * @param int, int
+ * @return bool
 **/
 bool sup(int i, int j) { return(i > j); }
 
