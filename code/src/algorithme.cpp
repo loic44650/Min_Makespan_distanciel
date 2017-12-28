@@ -66,7 +66,7 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
 	assert(resLSA.size() == resLPT.size());
 
 	cout << endl;
-	cout << "Veuillez saisir le nom du fichier qui va contenir le resulat :" << endl;
+	cout << "Veuillez saisir le nom du fichier dans lequel écrire le résultat :" << endl;
 	cout << "______________________________________________________________" << endl;
 	cout << endl;
 
@@ -96,13 +96,13 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
 				if(maxi < n.duree[i]) maxi = n.duree[i];  
 			}
 
-			fichier << endl;
 			fichier << "Pour l'instance n°" << cpt + 1 << " :" << endl;
 			fichier << "Borne inférieur maximum : " << maxi << endl;
 			fichier << "Borne inférieur moyenne : " << moy / n.nbTache << endl;
 			fichier << "Résulat LSA : " << resLSA[cpt] << endl;
 			fichier << "Résulat LPT : " << resLPT[cpt] << endl;
 			fichier << "Résulat myAlgo : " << endl;
+			fichier << endl;
 			fichier << "================================================" << endl;
 			fichier << endl;
 
