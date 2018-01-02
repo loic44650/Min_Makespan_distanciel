@@ -53,19 +53,19 @@ int main(int argc, char** argv)
 			case 1 : // fichier
 				instance = fileReadInstance();
 				// affichageInstance(instance);
-				affichageResultat(instance, LSA(instance), LPT(instance));
+				affichageResultat(instance, LSA(instance), LPT(instance),myAlgo(instance));
 				break;
 
 			case 2 : // clavier
 				instance = keyboardReadInstance();
 				// affichageInstance(instance);
-				affichageResultat(instance, LSA(instance), LPT(instance));
+				affichageResultat(instance, LSA(instance), LPT(instance),myAlgo(instance));
 				break;
 
 			case 3 : // générateur aléatoire
 				instance = randomGeneratorInstance();
-				// affichageInstance(instance);
-				ecritureResultat(instance, LSA(instance), LPT(instance));
+				affichageInstance(instance);
+				ecritureResultat(instance, LSA(instance), LPT(instance),myAlgo(instance));
 				break;
 
 			case 4 : // fermeture de l'appli.

@@ -1,0 +1,19 @@
+================================================
+ Résulats des instances générées aléatoirements 
+================================================
+
+Pour l'instance n°1 :
+Borne inférieur maximum : 9
+Borne inférieur moyenne : 5
+Résulat LSA : 23
+Résulat LPT : 21
+Résulat myAlgo : 
+
+================================================
+
+
+Ratio d'approximation moyen LSA : 2
+Ratio d'approximation moyen LPT : 2
+Ratio d'approximation moyen myAlgo : 
+================================================
+

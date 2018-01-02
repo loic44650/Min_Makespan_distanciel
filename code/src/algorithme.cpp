@@ -20,7 +20,7 @@ using namespace std;
  * @param vector<Instance>, vector<int>, vector<int>
  * @return
 **/
-void affichageResultat(vector<Instance> instance, vector<int> resLSA, vector<int> resLPT) // faudra rajouter le 3 eme algo
+void affichageResultat(vector<Instance> instance, vector<int> resLSA, vector<int> resLPT,vector<int> resMyAlgo) // faudra rajouter le 3 eme algo
 {
 	assert(resLSA.size() == resLPT.size());
 
@@ -42,7 +42,7 @@ void affichageResultat(vector<Instance> instance, vector<int> resLSA, vector<int
 		cout << "Borne inférieur moyenne : " << moy / instance[0].nbTache << endl;
 		cout << "Résulat LSA : " << resLSA[i] << endl;
 		cout << "Résulat LPT : " << resLPT[i] << endl;
-		cout << "Résulat myAlgo : " << endl;
+		cout << "Résulat myAlgo : " << resMyAlgo[i] << endl;
 		cout << endl;
 	}
 }
@@ -54,14 +54,14 @@ void affichageResultat(vector<Instance> instance, vector<int> resLSA, vector<int
  * @param vector<Instance>, vector<int>, vector<int>
  * @return
 **/
-void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> resLPT) // faudra rajouter le 3 eme algo
+void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> resLPT,vector<int> resMyAlgo) // faudra rajouter le 3 eme algo
 {
 	string nomFichier;
 	int maxi;
 	int moy;
 	int cpt = 0;
 	int mI;
-	double sumLSA = 0, sumLPT = 0;
+	double sumLSA = 0, sumLPT = 0,sumMyAlgo = 0;
 
 	assert(resLSA.size() == resLPT.size());
 
@@ -101,7 +101,7 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
 			fichier << "Borne inférieur moyenne : " << moy / n.nbTache << endl;
 			fichier << "Résulat LSA : " << resLSA[cpt] << endl;
 			fichier << "Résulat LPT : " << resLPT[cpt] << endl;
-			fichier << "Résulat myAlgo : " << endl;
+			fichier << "Résulat myAlgo : " << resMyAlgo[cpt]<< endl;
 			fichier << endl;
 			fichier << "================================================" << endl;
 			fichier << endl;
@@ -109,6 +109,7 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
 			mI = max(maxi,(moy /(int) n.nbTache) );
 			sumLSA += resLSA[cpt] / mI;
 			sumLPT += resLPT[cpt] / mI;
+			sumMyAlgo += resMyAlgo[cpt] / mI;
 
 			++cpt;
 		}
@@ -116,7 +117,7 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
 		fichier << endl;
 		fichier << "Ratio d'approximation moyen LSA : " << sumLSA / inst.size() << endl;
 		fichier << "Ratio d'approximation moyen LPT : " << sumLPT / inst.size() << endl;
-		fichier << "Ratio d'approximation moyen myAlgo : " << endl;
+		fichier << "Ratio d'approximation moyen myAlgo : " << sumMyAlgo / inst.size() << endl;
 		fichier << "================================================" << endl;
 		fichier << endl;
 
@@ -233,7 +234,19 @@ vector<int> LPT(vector<Instance> instance)
 
 	return resultat;
 }
-	
+
+
+int calcDelta(int moyenne)
+{
+	int cpt = 20;
+	int delta = 1;
+	while ((moyenne >= cpt) && (moyenne < (cpt + 10) ))
+	{
+		cpt += 10;
+		++delta;
+	}
+	return delta;
+}
 
 /**
  * @name myAlgo
@@ -243,9 +256,71 @@ vector<int> LPT(vector<Instance> instance)
 **/
 vector<int> myAlgo(vector<Instance> instance)
 {
+	int moyenne = 0, delta = 0, indiceMachine = 0, somme = 0,tmp = 0, j = 0;
+
+	bool stopLoop = false;
 	vector<int> resultat;
+	vector<int> machines;
 
 
+	for (auto inst : instance)
+	{
+		//moyenne = accumulate(inst.duree.begin(),inst.duree.end(),0.0) / inst.nbMachine;
+
+		moyenne = 20;
+		//delta  = 1;
+
+		delta = calcDelta(moyenne);
+
+		somme = 0;
+
+		// on crée nos machines, et on les mets à 0
+		for(unsigned int i = 0; i < inst.nbMachine; ++i)
+		{
+			machines.push_back(0);
+		}
+
+
+		for (int i = 0; i < inst.duree.size();++i)
+		{
+			
+			somme = 0;
+			j = i;
+			stopLoop = false;
+			
+			while (( j < inst.duree.size()) && (stopLoop != true))
+			{
+
+				somme += inst.duree[j];
+
+				if ((somme > moyenne) || ( (somme + delta) == moyenne )) 
+				{
+
+					stopLoop = true;
+
+					machines[indiceMachine] = somme;
+					++indiceMachine;
+
+				}
+				++j;
+			}
+
+		
+				
+		}
+
+		tmp = 0;
+		// on recup le max
+		for(unsigned int k = 1; k < inst.nbMachine; ++k)
+		{
+			if(machines[k] > machines[tmp]) tmp = k;
+		}
+
+		resultat.push_back(machines[tmp]);
+		machines.clear();
+
+
+	}
 
 	return resultat;
 }
