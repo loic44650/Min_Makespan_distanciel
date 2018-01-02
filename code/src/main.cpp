@@ -30,7 +30,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
 	vector<Instance> instance; 
-	int choix;
+	char choix;
 	bool done = false;
 
 	// Menu instance
@@ -50,25 +50,25 @@ int main(int argc, char** argv)
 
 		switch (choix)
 		{
-			case 1 : // fichier
+			case '1' : // fichier
 				instance = fileReadInstance();
-				affichageInstance(instance);
+				// affichageInstance(instance);
 				affichageResultat(instance, LSA(instance), LPT(instance),myAlgo(instance));
 				break;
 
-			case 2 : // clavier
+			case '2' : // clavier
 				instance = keyboardReadInstance();
 				// affichageInstance(instance);
 				affichageResultat(instance, LSA(instance), LPT(instance),myAlgo(instance));
 				break;
 
-			case 3 : // générateur aléatoire
+			case '3' : // générateur aléatoire
 				instance = randomGeneratorInstance();
-				affichageInstance(instance);
+				//affichageInstance(instance);
 				ecritureResultat(instance, LSA(instance), LPT(instance),myAlgo(instance));
 				break;
 
-			case 4 : // fermeture de l'appli.
+			case '4' : // fermeture de l'appli.
 				done = true;
 				break;	
 			
