@@ -3,53 +3,187 @@
 ================================================
 
 Pour l'instance n°1 :
-Borne inférieur maximum : 19
-Borne inférieur moyenne : 10
-Résulat LSA : 60
-Résulat LPT : 54
-Résulat myAlgo : 59
+Borne inférieur maximum : 6
+Borne inférieur moyenne : 3
+Résulat LSA : 11
+Résulat LPT : 11
+Résulat myAlgo : 12
 
 ================================================
 
 Pour l'instance n°2 :
-Borne inférieur maximum : 19
-Borne inférieur moyenne : 12
-Résulat LSA : 66
-Résulat LPT : 61
-Résulat myAlgo : 62
+Borne inférieur maximum : 7
+Borne inférieur moyenne : 4
+Résulat LSA : 14
+Résulat LPT : 14
+Résulat myAlgo : 19
 
 ================================================
 
 Pour l'instance n°3 :
-Borne inférieur maximum : 19
-Borne inférieur moyenne : 13
-Résulat LSA : 73
-Résulat LPT : 65
-Résulat myAlgo : 75
+Borne inférieur maximum : 6
+Borne inférieur moyenne : 3
+Résulat LSA : 13
+Résulat LPT : 12
+Résulat myAlgo : 12
 
 ================================================
 
 Pour l'instance n°4 :
-Borne inférieur maximum : 18
-Borne inférieur moyenne : 11
-Résulat LSA : 66
-Résulat LPT : 60
-Résulat myAlgo : 67
+Borne inférieur maximum : 7
+Borne inférieur moyenne : 4
+Résulat LSA : 14
+Résulat LPT : 13
+Résulat myAlgo : 17
 
 ================================================
 
 Pour l'instance n°5 :
-Borne inférieur maximum : 19
-Borne inférieur moyenne : 11
-Résulat LSA : 65
-Résulat LPT : 60
-Résulat myAlgo : 69
+Borne inférieur maximum : 7
+Borne inférieur moyenne : 3
+Résulat LSA : 12
+Résulat LPT : 10
+Résulat myAlgo : 12
 
 ================================================
 
+Pour l'instance n°6 :
+Borne inférieur maximum : 7
+Borne inférieur moyenne : 3
+Résulat LSA : 12
+Résulat LPT : 11
+Résulat myAlgo : 12
 
-Ratio d'approximation moyen LSA : 3
-Ratio d'approximation moyen LPT : 2.8
-Ratio d'approximation moyen myAlgo : 3
+================================================
+
+Pour l'instance n°7 :
+Borne inférieur maximum : 7
+Borne inférieur moyenne : 4
+Résulat LSA : 14
+Résulat LPT : 12
+Résulat myAlgo : 16
+
+================================================
+
+Pour l'instance n°8 :
+Borne inférieur maximum : 6
+Borne inférieur moyenne : 4
+Résulat LSA : 16
+Résulat LPT : 15
+Résulat myAlgo : 16
+
+================================================
+
+Pour l'instance n°9 :
+Borne inférieur maximum : 5
+Borne inférieur moyenne : 2
+Résulat LSA : 9
+Résulat LPT : 9
+Résulat myAlgo : 12
+
+================================================
+
+Pour l'instance n°10 :
+Borne inférieur maximum : 6
+Borne inférieur moyenne : 3
+Résulat LSA : 11
+Résulat LPT : 10
+Résulat myAlgo : 12
+
+================================================
+
+Pour l'instance n°11 :
+Borne inférieur maximum : 7
+Borne inférieur moyenne : 4
+Résulat LSA : 14
+Résulat LPT : 13
+Résulat myAlgo : 17
+
+================================================
+
+Pour l'instance n°12 :
+Borne inférieur maximum : 7
+Borne inférieur moyenne : 3
+Résulat LSA : 12
+Résulat LPT : 10
+Résulat myAlgo : 12
+
+================================================
+
+Pour l'instance n°13 :
+Borne inférieur maximum : 7
+Borne inférieur moyenne : 4
+Résulat LSA : 14
+Résulat LPT : 13
+Résulat myAlgo : 17
+
+================================================
+
+Pour l'instance n°14 :
+Borne inférieur maximum : 7
+Borne inférieur moyenne : 4
+Résulat LSA : 16
+Résulat LPT : 15
+Résulat myAlgo : 16
+
+================================================
+
+Pour l'instance n°15 :
+Borne inférieur maximum : 6
+Borne inférieur moyenne : 4
+Résulat LSA : 15
+Résulat LPT : 14
+Résulat myAlgo : 18
+
+================================================
+
+Pour l'instance n°16 :
+Borne inférieur maximum : 6
+Borne inférieur moyenne : 3
+Résulat LSA : 12
+Résulat LPT : 11
+Résulat myAlgo : 11
+
+================================================
+
+Pour l'instance n°17 :
+Borne inférieur maximum : 5
+Borne inférieur moyenne : 4
+Résulat LSA : 14
+Résulat LPT : 13
+Résulat myAlgo : 13
+
+================================================
+
+Pour l'instance n°18 :
+Borne inférieur maximum : 7
+Borne inférieur moyenne : 4
+Résulat LSA : 16
+Résulat LPT : 16
+Résulat myAlgo : 18
+
+================================================
+
+Pour l'instance n°19 :
+Borne inférieur maximum : 7
+Borne inférieur moyenne : 4
+Résulat LSA : 15
+Résulat LPT : 13
+Résulat myAlgo : 15
+
+================================================
+
+Pour l'instance n°20 :
+Borne inférieur maximum : 4
+Borne inférieur moyenne : 2
+Résulat LSA : 8
+Résulat LPT : 8
+Résulat myAlgo : 8
+
+================================================
+
+Ratio d'approximation moyen LSA : 1.7
+Ratio d'approximation moyen LPT : 1.4
+Ratio d'approximation moyen myAlgo : 1.85
 ================================================
 

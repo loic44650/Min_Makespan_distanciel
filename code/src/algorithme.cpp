@@ -9,6 +9,7 @@
 #define ALGORITHME
 
 #include "formatInstance.cpp"
+#include <numeric>
 #include <algorithm>
 
 using namespace std;
@@ -16,8 +17,8 @@ using namespace std;
 
 /**
  * @name affchageResulat
- * @brief affiche le resulat des algorithmes LSA et LPT
- * @param vector<Instance>, vector<int>, vector<int>
+ * @brief affiche le resulat des algorithmes LSA, LPT et myAlgo
+ * @param vector<Instance>, vector<int>, vector<int>, vector<int>
  * @return
 **/
 void affichageResultat(vector<Instance> instance, vector<int> resLSA, vector<int> resLPT,vector<int> resMyAlgo) // faudra rajouter le 3 eme algo
@@ -50,8 +51,8 @@ void affichageResultat(vector<Instance> instance, vector<int> resLSA, vector<int
 
 /**
  * @name ecritureResulat
- * @brief écrit le resulat des algorithmes LSA et LPT dans un fichier
- * @param vector<Instance>, vector<int>, vector<int>
+ * @brief écrit le resulat des algorithmes LSA, LPT et myAlgo dans un fichier
+ * @param vector<Instance>, vector<int>, vector<int>, vector<int>
  * @return
 **/
 void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> resLPT,vector<int> resMyAlgo) // faudra rajouter le 3 eme algo
@@ -114,7 +115,6 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
 			++cpt;
 		}
 
-		fichier << endl;
 		fichier << "Ratio d'approximation moyen LSA : " << sumLSA / inst.size() << endl;
 		fichier << "Ratio d'approximation moyen LPT : " << sumLPT / inst.size() << endl;
 		fichier << "Ratio d'approximation moyen myAlgo : " << sumMyAlgo / inst.size() << endl;
@@ -236,18 +236,6 @@ vector<int> LPT(vector<Instance> instance)
 }
 
 
-int calcDelta(int moyenne)
-{
-	int cpt = 20;
-	int delta = 1;
-	while ((moyenne >= cpt) && (moyenne < (cpt + 10) ))
-	{
-		cpt += 10;
-		++delta;
-	}
-	return delta;
-}
-
 /**
  * @name myAlgo
  * @brief  
@@ -256,8 +244,8 @@ int calcDelta(int moyenne)
 **/
 vector<int> myAlgo(vector<Instance> instance)
 {
-	int moyenne = 0, delta = 0, indiceMachine = 0, somme = 0,tmp = 0;
-	unsigned int j;
+	int moyenne, indiceMachine, somme, tmp;
+	unsigned int i, j;
 	bool stopLoop = false;
 	vector<int> resultat;
 	vector<int> machines;
@@ -265,61 +253,58 @@ vector<int> myAlgo(vector<Instance> instance)
 
 	for (auto inst : instance)
 	{
-		moyenne = accumulate(inst.duree.begin(),inst.duree.end(),0) / inst.nbMachine;
-
-
-		delta = calcDelta(moyenne);
-
-		cout << moyenne << " : " << delta << endl;
+		moyenne = accumulate(inst.duree.begin(), inst.duree.end(), 0) / inst.nbMachine;
 
 		// on crée nos machines, et on les mets à 0
-		for(unsigned int i = 0; i < inst.nbMachine; ++i)
+		for(unsigned int m = 0; m < inst.nbMachine; ++m)
 		{
 			machines.push_back(0);
 		}
 
-		unsigned int i = 0;
+		i = 0;
 		indiceMachine = 0;
-		while (i < inst.duree.size())
-		{
-			
+
+		while (i < inst.nbTache)
+		{	
 			somme = 0;
 			j = i;
 			stopLoop = false;
 			
-			while (( j < inst.duree.size()) && (stopLoop != true))
+			while ((j < inst.nbTache) && (!stopLoop))
 			{
-
 				somme += inst.duree[j];
-				if ((somme >= moyenne)) 
+				
+				if (somme >= moyenne) 
 				{
-					cout << somme << " " << i << " "<< j << endl;
 					stopLoop = true;
 					machines[indiceMachine] = somme;
 					++indiceMachine;
 				}
+				
 				++j;
-				if (j == inst.duree.size()){
-					cout << somme << " " << i << " "<< j << endl;
+
+				if (j == inst.nbTache)
+				{
 					machines[indiceMachine] = somme;
 					++indiceMachine;
 					i = 0;	
 				}
+
 			}
+
 			i = j;		
 		}
 
 		tmp = 0;
+
 		// on recup le max
 		for(unsigned int k = 1; k <= inst.nbMachine; ++k)
 		{
-			cout << k-1 << ":" << machines[k-1] << endl;
 			if(machines[k] > machines[tmp]) tmp = k;
 		}
 
 		resultat.push_back(machines[tmp]);
 		machines.clear();
-
 
 	}
 	return resultat;
