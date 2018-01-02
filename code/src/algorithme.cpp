@@ -256,8 +256,8 @@ int calcDelta(int moyenne)
 **/
 vector<int> myAlgo(vector<Instance> instance)
 {
-	int moyenne = 0, delta = 0, indiceMachine = 0, somme = 0,tmp = 0, j = 0;
-
+	int moyenne = 0, delta = 0, indiceMachine = 0, somme = 0,tmp = 0;
+	unsigned int j;
 	bool stopLoop = false;
 	vector<int> resultat;
 	vector<int> machines;
@@ -265,14 +265,12 @@ vector<int> myAlgo(vector<Instance> instance)
 
 	for (auto inst : instance)
 	{
-		//moyenne = accumulate(inst.duree.begin(),inst.duree.end(),0.0) / inst.nbMachine;
+		moyenne = accumulate(inst.duree.begin(),inst.duree.end(),0) / inst.nbMachine;
 
-		moyenne = 20;
-		//delta  = 1;
 
 		delta = calcDelta(moyenne);
 
-		somme = 0;
+		cout << moyenne << " : " << delta << endl;
 
 		// on crée nos machines, et on les mets à 0
 		for(unsigned int i = 0; i < inst.nbMachine; ++i)
@@ -280,8 +278,8 @@ vector<int> myAlgo(vector<Instance> instance)
 			machines.push_back(0);
 		}
 
-
-		for (int i = 0; i < inst.duree.size();++i)
+		unsigned int i = 0;
+		while (i < inst.duree.size())
 		{
 			
 			somme = 0;
@@ -292,27 +290,29 @@ vector<int> myAlgo(vector<Instance> instance)
 			{
 
 				somme += inst.duree[j];
-
-				if ((somme > moyenne) || ( (somme + delta) == moyenne )) 
+				if ((somme >= moyenne)) 
 				{
-
+					cout << somme << " " << i << " "<< j << endl;
 					stopLoop = true;
-
 					machines[indiceMachine] = somme;
 					++indiceMachine;
-
 				}
 				++j;
+				if (j == inst.duree.size()){
+					cout << somme << " " << i << " "<< j << endl;
+					machines[indiceMachine] = somme;
+					++indiceMachine;
+					i = 0;	
+				}
 			}
-
-		
-				
+			i = j;		
 		}
 
 		tmp = 0;
 		// on recup le max
-		for(unsigned int k = 1; k < inst.nbMachine; ++k)
+		for(unsigned int k = 1; k <= inst.nbMachine; ++k)
 		{
+			cout << k-1 << ":" << machines[k-1] << endl;
 			if(machines[k] > machines[tmp]) tmp = k;
 		}
 
@@ -321,7 +321,6 @@ vector<int> myAlgo(vector<Instance> instance)
 
 
 	}
-
 	return resultat;
 }
 

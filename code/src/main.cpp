@@ -52,7 +52,7 @@ int main(int argc, char** argv)
 		{
 			case 1 : // fichier
 				instance = fileReadInstance();
-				// affichageInstance(instance);
+				affichageInstance(instance);
 				affichageResultat(instance, LSA(instance), LPT(instance),myAlgo(instance));
 				break;
 
