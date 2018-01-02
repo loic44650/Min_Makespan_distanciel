@@ -113,8 +113,6 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
 			++cpt;
 		}
 
-		// ratio à calculer !!
-
 		fichier << endl;
 		fichier << "Ratio d'approximation moyen LSA : " << sumLSA / inst.size() << endl;
 		fichier << "Ratio d'approximation moyen LPT : " << sumLPT / inst.size() << endl;
@@ -131,7 +129,7 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
  * @name LSA
  * @brief List Scheduling Algorithm 
  * @param vector<Instance>
- * @return
+ * @return vector<int>
 **/
 vector<int> LSA(vector<Instance> instance)
 {
@@ -189,7 +187,7 @@ bool sup(int i, int j) { return(i > j); }
  * @name LPT
  * @brief Largest Processing Time 
  * @param vector<Instance>
- * @return
+ * @return vector<int>
 **/
 vector<int> LPT(vector<Instance> instance)
 {
@@ -241,7 +239,7 @@ vector<int> LPT(vector<Instance> instance)
  * @name myAlgo
  * @brief  
  * @param vector<Instance>
- * @return
+ * @return vector<int>
 **/
 vector<int> myAlgo(vector<Instance> instance)
 {

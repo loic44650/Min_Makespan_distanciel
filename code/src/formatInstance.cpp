@@ -26,7 +26,7 @@ struct Instance
 /**
  * @name affchageInstance
  * @brief affiche le contenu d'une instance
- * @param Instance
+ * @param vector<Instance>
  * @return
 **/
 void affichageInstance(vector<Instance> instance)
@@ -50,7 +50,7 @@ void affichageInstance(vector<Instance> instance)
  * @name fileReadInstance
  * @brief l'instance est lu à partir dun fichier
  * @param
- * @return Instance
+ * @return vector<Instance>
 **/
 vector<Instance> fileReadInstance()
 {
@@ -116,7 +116,7 @@ vector<Instance> fileReadInstance()
  * @name keyboardReadInstance
  * @brief l'instance est saisie au clavier
  * @param
- * @return Instance
+ * @return vector<Instance>
 **/
 vector<Instance> keyboardReadInstance()
 {
@@ -169,7 +169,7 @@ vector<Instance> keyboardReadInstance()
  * @name randomGeneratorInstance
  * @brief plusieurs instances sont générées aléatoirements, à partir de 5 entiers saisie par l'utilisateur
  * @param
- * @return Instance
+ * @return vector<Instance>
 **/
 vector<Instance> randomGeneratorInstance()
 {
