@@ -279,6 +279,7 @@ vector<int> myAlgo(vector<Instance> instance)
 		}
 
 		unsigned int i = 0;
+		indiceMachine = 0;
 		while (i < inst.duree.size())
 		{
 			
