@@ -250,7 +250,6 @@ vector<int> myAlgo(vector<Instance> instance)
 	vector<int> resultat;
 	vector<int> machines;
 
-
 	for (auto inst : instance)
 	{
 		moyenne = accumulate(inst.duree.begin(), inst.duree.end(), 0) / inst.nbMachine;
@@ -307,6 +306,7 @@ vector<int> myAlgo(vector<Instance> instance)
 		machines.clear();
 
 	}
+
 	return resultat;
 }
 
