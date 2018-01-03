@@ -57,6 +57,8 @@ void affichageResultat(vector<Instance> instance, vector<int> resLSA, vector<int
 **/
 void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> resLPT,vector<int> resMyAlgo) // faudra rajouter le 3 eme algo
 {
+
+	affichageResultat(inst,resLSA,resLPT,resMyAlgo);
 	string nomFichier;
 	int maxi;
 	int moy;
@@ -245,8 +247,11 @@ vector<int> LPT(vector<Instance> instance)
 vector<int> myAlgo(vector<Instance> instance)
 {
 	int moyenne, indiceMachine, somme, tmp;
+
 	unsigned int i, j;
+
 	bool stopLoop = false;
+
 	vector<int> resultat;
 	vector<int> machines;
 
@@ -297,7 +302,7 @@ vector<int> myAlgo(vector<Instance> instance)
 		tmp = 0;
 
 		// on recup le max
-		for(unsigned int k = 1; k <= inst.nbMachine; ++k)
+		for(unsigned int k = 1; k < inst.nbMachine; ++k)
 		{
 			if(machines[k] > machines[tmp]) tmp = k;
 		}
