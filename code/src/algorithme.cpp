@@ -246,16 +246,13 @@ vector<int> LPT(vector<Instance> instance)
 **/
 vector<int> myAlgo(vector<Instance> instance)
 {
-	int moyenne, indiceMachine, somme, tmp;
-
-	unsigned int i, j;
-
-	bool stopLoop = false;
-
 	vector<int> resultat;
 	vector<int> machines;
+	int moyenne, indiceMachine, somme, tmp;
+	unsigned int i, j;
+	bool stopLoop = false;
 
-	for (auto inst : instance)
+	for(auto inst : instance)
 	{
 		moyenne = accumulate(inst.duree.begin(), inst.duree.end(), 0) / inst.nbMachine;
 
@@ -268,17 +265,17 @@ vector<int> myAlgo(vector<Instance> instance)
 		i = 0;
 		indiceMachine = 0;
 
-		while (i < inst.nbTache)
+		while(i < inst.nbTache)
 		{	
 			somme = 0;
 			j = i;
 			stopLoop = false;
 			
-			while ((j < inst.nbTache) && (!stopLoop))
+			while((j < inst.nbTache) && (!stopLoop))
 			{
 				somme += inst.duree[j];
 				
-				if (somme >= moyenne) 
+				if(somme >= moyenne) 
 				{
 					stopLoop = true;
 					machines[indiceMachine] = somme;
@@ -287,7 +284,7 @@ vector<int> myAlgo(vector<Instance> instance)
 				
 				++j;
 
-				if (j == inst.nbTache)
+				if(j == inst.nbTache)
 				{
 					machines[indiceMachine] = somme;
 					++indiceMachine;
