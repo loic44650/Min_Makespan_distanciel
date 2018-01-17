@@ -24,10 +24,12 @@ using namespace std;
 void affichageResultat(vector<Instance> instance, vector<int> resLSA, vector<int> resLPT,vector<int> resMyAlgo) // faudra rajouter le 3 eme algo
 {
 	assert(resLSA.size() == resLPT.size());
+	assert(resLSA.size() == resMyAlgo.size());
 
 	int max = 0;
 	int moy = 0;
 
+	// on calcul la moyenne et le maximum en même temps
 	for(unsigned int i = 0; i < instance[0].nbTache; ++i)
 	{
 		moy += instance[0].duree[i];
@@ -35,6 +37,7 @@ void affichageResultat(vector<Instance> instance, vector<int> resLSA, vector<int
 		if(max < instance[0].duree[i]) max = instance[0].duree[i];  
 	}
 
+	// les résultats
 	for(unsigned int i = 0; i < resLSA.size(); ++i)
 	{
 		cout << endl;
@@ -57,16 +60,15 @@ void affichageResultat(vector<Instance> instance, vector<int> resLSA, vector<int
 **/
 void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> resLPT,vector<int> resMyAlgo) // faudra rajouter le 3 eme algo
 {
+	assert(resLSA.size() == resLPT.size());
+	assert(resLSA.size() == resMyAlgo.size());
 
-	affichageResultat(inst,resLSA,resLPT,resMyAlgo);
 	string nomFichier;
 	int maxi;
 	int moy;
 	int cpt = 0;
 	int mI;
 	double sumLSA = 0, sumLPT = 0,sumMyAlgo = 0;
-
-	assert(resLSA.size() == resLPT.size());
 
 	cout << endl;
 	cout << "Veuillez saisir le nom du fichier dans lequel écrire le résultat :" << endl;
@@ -77,11 +79,10 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
 
 	ofstream fichier(nomFichier);
 
-	vector<int> vLSA,vLPT;
-
 	if(!fichier.is_open()) cerr << "Impossible d'ouvrir le fichier " << nomFichier << " !" << endl;
 	else
 	{
+		// on écrit dans le fichier
 		fichier << "================================================" << endl;
 		fichier << " Résulats des instances générées aléatoirements " << endl;
 		fichier << "================================================" << endl;
@@ -92,6 +93,7 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
 			maxi = 0;
 			moy = 0;
 
+			// on calcul la moyenne et le maximum en même temps
 			for(unsigned int i = 0; i < n.nbTache; ++i)
 			{
 				moy += n.duree[i];
@@ -99,6 +101,7 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
 				if(maxi < n.duree[i]) maxi = n.duree[i];  
 			}
 
+			// les résultats
 			fichier << "Pour l'instance n°" << cpt + 1 << " :" << endl;
 			fichier << "Borne inférieur maximum : " << maxi << endl;
 			fichier << "Borne inférieur moyenne : " << moy / n.nbTache << endl;
@@ -117,6 +120,7 @@ void ecritureResultat(vector<Instance> inst, vector<int> resLSA, vector<int> res
 			++cpt;
 		}
 
+		// les ratios d'approximation
 		fichier << "Ratio d'approximation moyen LSA : " << sumLSA / inst.size() << endl;
 		fichier << "Ratio d'approximation moyen LPT : " << sumLPT / inst.size() << endl;
 		fichier << "Ratio d'approximation moyen myAlgo : " << sumMyAlgo / inst.size() << endl;
@@ -163,7 +167,7 @@ vector<int> LSA(vector<Instance> instance)
 
 		tmp = 0;
 
-		// on recup le max
+		// on recupère le maximum
 		for(unsigned int k = 1; k < inst.nbMachine; ++k)
 		{
 			if(machines[k] > machines[tmp]) tmp = k;
@@ -224,7 +228,7 @@ vector<int> LPT(vector<Instance> instance)
 
 		tmp = 0;
 
-		// on recup le max
+		// on recupère le maximum
 		for(unsigned int k = 1; k < inst.nbMachine; ++k)
 		{
 			if(machines[k] > machines[tmp]) tmp = k;
@@ -240,7 +244,7 @@ vector<int> LPT(vector<Instance> instance)
 
 /**
  * @name myAlgo
- * @brief  
+ * @brief ordonne les tâches en fonction de la moyenne de la durée totale par machine 
  * @param vector<Instance>
  * @return vector<int>
 **/
@@ -298,7 +302,7 @@ vector<int> myAlgo(vector<Instance> instance)
 
 		tmp = 0;
 
-		// on recup le max
+		// on recupère le maximum
 		for(unsigned int k = 1; k < inst.nbMachine; ++k)
 		{
 			if(machines[k] > machines[tmp]) tmp = k;
@@ -306,7 +310,6 @@ vector<int> myAlgo(vector<Instance> instance)
 
 		resultat.push_back(machines[tmp]);
 		machines.clear();
-
 	}
 
 	return resultat;

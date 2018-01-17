@@ -48,7 +48,7 @@ void affichageInstance(vector<Instance> instance)
 
 /**
  * @name fileReadInstance
- * @brief l'instance est lu à partir dun fichier
+ * @brief création d'une instance à partir d'un fichier
  * @param
  * @return vector<Instance>
 **/
@@ -73,8 +73,10 @@ vector<Instance> fileReadInstance()
 	if(!fichier.is_open()) cerr << "Impossible d'ouvrir le fichier " << nomFichier << " !" << endl;
 	else
 	{
+		// on parcourt le fichier
 		while(!fichier.eof())
 		{
+			// ligne par ligne
 			getline(fichier, str);
 
 			for(unsigned int i = 0; i <= str.length(); ++i)
@@ -82,18 +84,21 @@ vector<Instance> fileReadInstance()
 				if(i != str.length() && (str[i] != ':')) tmp += str[i];
 				else if(cpt == 0) 
 				{
+					// on récupère le nombre de machine
 					instance.nbMachine = stoi(tmp);
 					++cpt;
 					tmp = "";
 				}
 				else if(cpt == 1)
 				{
+					// on récupère le nombre de tâche
 					instance.nbTache = stoi(tmp);
 					++cpt;
 					tmp = "";	
 				}
 				else 
 				{
+					// on récupère chacune des durées
 					instance.duree.push_back(stoi(tmp));
 					tmp = "";	
 				}
@@ -114,7 +119,7 @@ vector<Instance> fileReadInstance()
 
 /**
  * @name keyboardReadInstance
- * @brief l'instance est saisie au clavier
+ * @brief création d'une instance à partir d'une saisie au clavier
  * @param
  * @return vector<Instance>
 **/
@@ -139,18 +144,21 @@ vector<Instance> keyboardReadInstance()
 		if(i != str.length() && (str[i] != ':')) tmp += str[i];
 		else if(cpt == 0) 
 		{
+			// on récupère le nombre de machine
 			instance.nbMachine = stoi(tmp);
 			++cpt;
 			tmp = "";
 		}
 		else if(cpt == 1)
 		{
+			// on récupère le nombre de tâche
 			instance.nbTache = stoi(tmp);
 			++cpt;
 			tmp = "";	
 		}
 		else 
 		{
+			// on récupère chacune des durées
 			instance.duree.push_back(stoi(tmp));
 			tmp = "";	
 		}
@@ -167,7 +175,7 @@ vector<Instance> keyboardReadInstance()
 
 /**
  * @name randomGeneratorInstance
- * @brief plusieurs instances sont générées aléatoirements, à partir de 5 entiers saisie par l'utilisateur
+ * @brief plusieurs instances sont générées aléatoirements, à partir de 5 entiers saisis par l'utilisateur
  * @param
  * @return vector<Instance>
 **/
@@ -191,9 +199,11 @@ vector<Instance> randomGeneratorInstance()
 	cout << "Duree min : " ; cin >> min; cout << endl;
 	cout << "Duree max : " ; cin >> max; cout << endl;
 
+	// nombre de machines et de tâches
 	instance.nbMachine = nbMachine;
 	instance.nbTache = nbTache;
 
+	// vecteur de durée
 	for(int i = 0; i < nbInstance; ++i)
 	{
 		instance.duree.clear();
@@ -207,6 +217,9 @@ vector<Instance> randomGeneratorInstance()
 		vector.push_back(instance);
 	}
 
+	// on vérifie qu'on a bien autant de durée que de tâche
+	assert(instance.nbTache == instance.duree.size());
+	
 	return vector;
 }
 

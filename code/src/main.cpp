@@ -33,7 +33,7 @@ int main(int argc, char** argv)
 	char choix;
 	bool done = false;
 
-	// Menu instance
+	// Menu
 	while (!done)
 	{
 		cout << endl;
@@ -64,7 +64,7 @@ int main(int argc, char** argv)
 
 			case '3' : // générateur aléatoire
 				instance = randomGeneratorInstance();
-				//affichageInstance(instance);
+				// affichageInstance(instance);
 				ecritureResultat(instance, LSA(instance), LPT(instance),myAlgo(instance));
 				break;
 
