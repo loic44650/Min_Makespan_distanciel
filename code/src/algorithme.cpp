@@ -258,6 +258,7 @@ vector<int> myAlgo(vector<Instance> instance)
 
 	for(auto inst : instance)
 	{
+		// calcul de moyenne en utilisant la fonction de STL de c++
 		moyenne = accumulate(inst.duree.begin(), inst.duree.end(), 0) / inst.nbMachine;
 
 		// on crée nos machines, et on les mets à 0
@@ -269,16 +270,19 @@ vector<int> myAlgo(vector<Instance> instance)
 		i = 0;
 		indiceMachine = 0;
 
+		// Debut du parcours des taches sans ordre specifique
 		while(i < inst.nbTache)
 		{	
 			somme = 0;
 			j = i;
 			stopLoop = false;
 			
+			//Parcours des taches pour affecter a la machine d'indice 'indiceMachine'
 			while((j < inst.nbTache) && (!stopLoop))
 			{
 				somme += inst.duree[j];
 				
+				//On verifie si la somme des taches parcourue depassent la moyenne
 				if(somme >= moyenne) 
 				{
 					stopLoop = true;
@@ -287,14 +291,6 @@ vector<int> myAlgo(vector<Instance> instance)
 				}
 				
 				++j;
-
-				if(j == inst.nbTache)
-				{
-					machines[indiceMachine] = somme;
-					++indiceMachine;
-					i = 0;	
-				}
-
 			}
 
 			i = j;		
