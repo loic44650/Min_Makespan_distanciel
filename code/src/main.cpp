@@ -24,8 +24,8 @@ using namespace std;
 /**
  * @name main
  * @brief fonction main du programme principal
- * @param
- * @return
+ * @param int, char**
+ * @return int
 **/
 int main(int argc, char** argv)
 {
@@ -68,7 +68,7 @@ int main(int argc, char** argv)
 				ecritureResultat(instance, LSA(instance), LPT(instance),myAlgo(instance));
 				break;
 
-			case '4' : // fermeture de l'appli.
+			case '4' : // fermeture du programme
 				done = true;
 				break;	
 			
