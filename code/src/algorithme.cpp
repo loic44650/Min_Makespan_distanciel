@@ -17,7 +17,7 @@ using namespace std;
 
 /**
  * @name affchageResulat
- * @brief affiche le resulat des algorithmes LSA, LPT et myAlgo
+ * @brief affiche le résultat des algorithmes LSA, LPT et myAlgo
  * @param vector<Instance>, vector<int>, vector<int>, vector<int>
  * @return
 **/
@@ -54,7 +54,7 @@ void affichageResultat(vector<Instance> instance, vector<int> resLSA, vector<int
 
 /**
  * @name ecritureResulat
- * @brief écrit le resulat des algorithmes LSA, LPT et myAlgo dans un fichier
+ * @brief écrit le résultat des algorithmes LSA, LPT et myAlgo dans un fichier
  * @param vector<Instance>, vector<int>, vector<int>, vector<int>
  * @return
 **/
@@ -183,7 +183,7 @@ vector<int> LSA(vector<Instance> instance)
 
 /**
  * @name sup
- * @brief retourne vrai si i supérieur strict à j 
+ * @brief retourne vrai si i est supérieur strict à j 
  * @param int, int
  * @return bool
 **/
@@ -213,7 +213,7 @@ vector<int> LPT(vector<Instance> instance)
 			machines.push_back(0);
 		}
 
-		// on va parcourir toutes les tâches et les atribuées à la première machine disponible
+		// on va parcourir toutes les tâches et les atribuer à la première machine disponible
 		for(auto dureeTache : inst.duree)
 		{
 			tmp = 0;
@@ -258,7 +258,7 @@ vector<int> myAlgo(vector<Instance> instance)
 
 	for(auto inst : instance)
 	{
-		// calcul de moyenne en utilisant la fonction de STL de c++
+		// calcul de la moyenne en utilisant la fonction de STL de c++
 		moyenne = accumulate(inst.duree.begin(), inst.duree.end(), 0) / inst.nbMachine;
 
 		// on crée nos machines, et on les mets à 0
@@ -270,19 +270,19 @@ vector<int> myAlgo(vector<Instance> instance)
 		i = 0;
 		indiceMachine = 0;
 
-		// Debut du parcours des taches sans ordre specifique
+		// Début du parcours des tâches sans ordre specifique
 		while(i < inst.nbTache)
 		{	
 			somme = 0;
 			j = i;
 			stopLoop = false;
 			
-			//Parcours des taches pour affecter a la machine d'indice 'indiceMachine'
+			// Parcours des tâches pour affecter à la machine d'indice 'indiceMachine'
 			while((j < inst.nbTache) && (!stopLoop))
 			{
 				somme += inst.duree[j];
 				
-				//On verifie si la somme des taches parcourue depassent la moyenne
+				// On verifie si la somme des tâches parcourues dépasse la moyenne
 				if(somme >= moyenne) 
 				{
 					stopLoop = true;
